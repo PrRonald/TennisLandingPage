@@ -6,7 +6,7 @@ import { Rights } from "./components/Rights";
 function App() {
   return (
     <section className="w" >
-      <div className="w-full h-[50vh] "
+      <div className="w-full grid grid-rows-2 "
         style={{ backgroundImage: `url("./img/tennis.jpeg")` }} >
         <div className="w" >
           <Header />
