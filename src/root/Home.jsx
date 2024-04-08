@@ -1,11 +1,11 @@
-import { FrontPage } from "../components/FrontPage";
+import { News } from "../components/News";
 import { Search } from "../components/Search";
 
 export const Home = () => {
     return( 
         <section>
             <div>
-                <FrontPage />
+                <News />                
                 <Search />
             </div>
         </section>
