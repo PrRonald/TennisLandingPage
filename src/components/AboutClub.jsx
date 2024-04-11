@@ -1,5 +1,3 @@
-import { Link } from "react-router-dom";
-
 export const AboutClub = () => {
     return( 
         <section className="flex flex-col gap-8 py-2.5 px-6 ">
