@@ -15,8 +15,8 @@ import { Match } from './root/Match';
 const router = createBrowserRouter(
   [
     {
+      path: "/",
       element: <App />,
-
     },
     {
       path: "/Match",
