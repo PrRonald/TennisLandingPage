@@ -1,13 +1,12 @@
 import { BigNumber } from "./BigNumber";
 import { Metrics } from "./Metrics";
 import { NamesPoints } from "./NamesPoints";
+import { sum } from "../Sum";
 
 export const Players = ({PositionPlayer, PlayerData}) => {
 
 
-    const sum = (metrics) => (
-        metrics.reduce((total, numStr) => total + Number(numStr), 0)
-    ) 
+    
 
     return (
         <section className="grid grid-cols-5 grid-rows-[auto_auto] " >
