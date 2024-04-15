@@ -1,8 +1,9 @@
-export const PointsMap = ({ points }) => {
+export const PointsMap = ({ points, color }) => {
     return (
         <>
             {points.map(point => (
-                <td>
+                <td className={`text-center text-lg font-semibold
+                  ${color ? "text-yellow-500 ": "text-gray-500 "}`}>
                     {point}
                 </td>
             ))}
