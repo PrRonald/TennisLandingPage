@@ -42,14 +42,15 @@ export const Plans = () => {
                 </h2>
             </div>
             <div>
-                <div className="w-full flex flex-col  ">
+                <div className="w-full flex flex-col xl:flex-row  ">
                     {plans.map(plan => (
                         <div 
                             className="flex flex-col " 
                             key={plan.id}>
                             <label
-                                className={`${((plan.title === check) ? "border-b-2 border-green-500" :
-                                 "border-nobe"  )}  `}
+                                className={` w-1/2  
+                                ${((plan.title === check) ? "border-b-2 border-green-500" : "border-nobe"  )}
+                                  `}
                                 htmlFor={plan.title}>
                                 {plan.title}
                                 <input
@@ -61,12 +62,12 @@ export const Plans = () => {
                                     onChange={onChange}
                                 />
                             </label>
-                            <div className="">
+                            <div className="w-1/2">
                                 <p className={` py-4 
                                 ${((plan.title === check) ? "text-justify" : "hidden")}`} >
                                     {plan.planInfo}
                                 </p>
-                                {(plan.title === check) ? <img src={plan.img} alt="t" />: <span></span> }
+                                {(plan.title === check) ? <img src={plan.img} alt="t" />: ""}
                             </div>
                         </div>
                     ))}

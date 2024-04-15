@@ -8,34 +8,21 @@ import { About } from './root/About';
 import { Services } from './root/Sevices';
 import { Events } from './root/Events';
 import { Home } from './root/Home';
+import { Match } from './root/Match';
 
 
 
-const router = createBrowserRouter([{
-  element: <App />,
-  children:[
-  {
-    path:"/",
-    element: <Home />
-  },
-  {
-    path:"/menu",
-    element: <Menu />
-  },
-  {
-    path:"/about",
-    element: <About />
-  },
-  {
-    path:"/services",
-    element: <Services />
-  },
-  {
-    path:"/event",
-    element: <Events />
-  }
-]
-}])
+const router = createBrowserRouter(
+  [
+    {
+      element: <App />,
+
+    },
+    {
+      path: "/Match",
+      element: <Match />
+    }
+  ]);
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
