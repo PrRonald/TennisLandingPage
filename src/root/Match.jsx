@@ -20,8 +20,15 @@ export const Match = () => {
     }
 
     return (
-        <section className="w-full h-[100vh] flex flex-col justify-center gap-12 bg-blue-950  ">
-                <div className="w-full h-[50vh] grid grid-cols-2 grid-rows-1
+        <section className="w-full h-[100vh] grid grid-rows-[20vh_50vh_30vh]
+                bg-blue-950  ">
+            <div className="w-full px-4 pt-2">
+                <img
+                    className="w-[150px] h-[100px]"
+                    src="/img/TennisLogo.png"
+                    alt="Logo" />
+            </div>
+                <div className="w-full h-[40vh] grid grid-cols-2 grid-rows-auto
                     place-items-center ">
                     <div className="w-full ">
                         <TablePlayers player={players} />
@@ -33,7 +40,6 @@ export const Match = () => {
                 <div className="px-4">
                     <PointsTable players={players} />
                 </div>
-
         </section>
     );
 }
