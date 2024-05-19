@@ -3,6 +3,11 @@ module.exports = {
   content: ["./src/**/*.{html,js,jsx}"],
   theme: {
     extend: {
+      screens: {
+        'tall-sm': { 'raw': '(min-height: 800px)' },
+        'tall-xl': { 'raw': '(min-height: 1080)' },
+        // => @media (min-height: 800px) { ... }
+      },
       padding: {
           '21': '84px'
       },

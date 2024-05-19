@@ -1,9 +1,9 @@
 export const FrontPage = () => {
     return (
         <section
-            className="w-full h-[70vh] px-6  md:px-21 md:h-[50vh] bg-mobile-front
-            md:bg-desktop-front bg-cover bg-center">
-            <div className="w-full h-full flex flex-col items-center gap-4 justify-center
+            className="w-full h-[50vh] max-h-[300px] px-6  md:px-21 md:h-[50vh] bg-mobile-front
+            sm:bg-desktop-front bg-cover bg-center ">
+            <div className="w-full h-full flex flex-col items-center xl:gap-4 gap-2 justify-center
                      xl:w-1/2 md:items-start">
                 <h1 className="w-full text-2xl font-light text-white text-center 
                         md:text-start ">

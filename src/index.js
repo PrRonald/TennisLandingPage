@@ -9,6 +9,7 @@ import { Services } from './root/Sevices';
 import { Events } from './root/Events';
 import { Home } from './root/Home';
 import { Match } from './root/Match';
+import { Vs } from './root/Vs';
 
 
 
@@ -19,8 +20,12 @@ const router = createBrowserRouter(
       element: <App />,
     },
     {
-      path: "/Match",
+      path: "/match-metrics",
       element: <Match />
+    },
+    {
+      path: "/vs",
+      element: <Vs />
     }
   ]);
 

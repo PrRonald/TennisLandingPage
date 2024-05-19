@@ -26,9 +26,12 @@ export const Plans = () => {
     const [check, setChecked] = useState(plans[0].title);
 
     const onChange = (event) => {
+        // const element = document.querySelector('.mm');
+        // element.scrollIntoView()
+    
         setChecked(event.target.value)
-        console.log("yeess")
     }
+
 
     return (
 
@@ -42,15 +45,13 @@ export const Plans = () => {
                 </h2>
             </div>
             <div>
-                <div className="w-full flex flex-col xl:flex-row  ">
+                <div className="w-full flex flex-col xl:flex-col scroll-smooth">
                     {plans.map(plan => (
                         <div 
-                            className="flex flex-col " 
                             key={plan.id}>
                             <label
                                 className={` w-1/2  
-                                ${((plan.title === check) ? "border-b-2 border-green-500" : "border-nobe"  )}
-                                  `}
+                                ${((plan.title === check) ? "border-b-2 border-green-500" : "border-none"  )}`}
                                 htmlFor={plan.title}>
                                 {plan.title}
                                 <input
@@ -62,7 +63,7 @@ export const Plans = () => {
                                     onChange={onChange}
                                 />
                             </label>
-                            <div className="w-1/2">
+                            <div className="w-full">
                                 <p className={` py-4 
                                 ${((plan.title === check) ? "text-justify" : "hidden")}`} >
                                     {plan.planInfo}
