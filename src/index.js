@@ -3,15 +3,10 @@ import ReactDOM from 'react-dom/client';
 import App from './App';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import "./styles/index.css"
-import { Menu } from './root/Menu';
-import { About } from './root/About';
-import { Services } from './root/Sevices';
-import { Events } from './root/Events';
-import { Home } from './root/Home';
 import { Match } from './root/Match';
-import { Vs } from './root/Vs';
-
-
+import { Tennis } from './root/Tennis';
+import { Players } from './root/Players';
+import { LiveMatch } from './root/LiveMatch';
 
 const router = createBrowserRouter(
   [
@@ -20,15 +15,25 @@ const router = createBrowserRouter(
       element: <App />,
     },
     {
-      path: "/match-metrics",
-      element: <Match />
-    },
-    {
-      path: "/vs",
-      element: <Vs />
+      path: "/Tennis",
+      element: <Tennis />,
+      children: [
+        {
+          path: "Players",
+          element: <Players />,
+        },
+        {
+          path: "match",
+          element: <Match />,
+        },
+        {
+          path: "live-match",
+          element: <LiveMatch />,
+        },
+
+      ]
     }
   ]);
-
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

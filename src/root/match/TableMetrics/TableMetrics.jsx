@@ -17,7 +17,7 @@ export const TableMetrics = () => {
     
 
     return (
-        <section className="w-[90%] ">
+        <section className="w-full xl:w-[90%]  ">
             <Players PositionPlayer={true} PlayerData={metricsPlayer1} />
             <Players PositionPlayer={false} PlayerData={metricsPlayer2} />
         </section>

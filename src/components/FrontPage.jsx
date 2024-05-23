@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export const FrontPage = () => {
     return (
         <section
@@ -18,12 +20,12 @@ export const FrontPage = () => {
                     Whe its diverse list of members profesional equipment and lots of
                     tidy courts the proShot club in your perfect sports & recreation getaway
                 </p>
-                <a
-                    href="#"
+                <Link
+                    to="Tennis/players"
                     className="w-[144px] h-9 rounded-3xl bg-green-400
                     flex items-center justify-center text-sm font-normal text-white " >
                     BOOK A COART
-                </a>
+                </Link>
             </div>
         </section>
     );

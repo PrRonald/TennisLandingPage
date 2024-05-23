@@ -28,14 +28,13 @@ export const Plans = () => {
     const onChange = (event) => {
         // const element = document.querySelector('.mm');
         // element.scrollIntoView()
-    
+
         setChecked(event.target.value)
     }
 
 
     return (
-
-        <section className="grid grid-cols-1 grid-rows-[auto_auto_auto] gap-7 px-6 pt-4  " >
+        <section>
             <div className="w-full ">
                 <h1 className="w-full text-xl font-medium text-black text-left">
                     DO MORE THAN
@@ -47,11 +46,11 @@ export const Plans = () => {
             <div>
                 <div className="w-full flex flex-col xl:flex-col scroll-smooth">
                     {plans.map(plan => (
-                        <div 
+                        <div
                             key={plan.id}>
                             <label
                                 className={` w-1/2  
-                                ${((plan.title === check) ? "border-b-2 border-green-500" : "border-none"  )}`}
+                                ${((plan.title === check) ? "border-b-2 border-green-500" : "border-none")}`}
                                 htmlFor={plan.title}>
                                 {plan.title}
                                 <input
@@ -59,7 +58,7 @@ export const Plans = () => {
                                     value={plan.title}
                                     type="radio"
                                     id={plan.title}
-                                    checked={check === plan.title }
+                                    checked={check === plan.title}
                                     onChange={onChange}
                                 />
                             </label>
@@ -68,7 +67,7 @@ export const Plans = () => {
                                 ${((plan.title === check) ? "text-justify" : "hidden")}`} >
                                     {plan.planInfo}
                                 </p>
-                                {(plan.title === check) ? <img src={plan.img} alt="t" />: ""}
+                                {(plan.title === check) ? <img src={plan.img} alt="t" /> : ""}
                             </div>
                         </div>
                     ))}
