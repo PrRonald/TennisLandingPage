@@ -1,31 +1,5 @@
-import { useEffect } from "react";
-
-const API_HEADERS = {
-    'Content-type' : 'Aplication/json',
-    Authentication: 'any-string-you-like'
-}
 
 export const LiveMatch = () => {
-
-    const editProduct = {
-        description: "Prospect_Open24_AndresGarcia_VS_EdwinRios",
-        action: "REPORT"
-
-    }
-
-
-    useEffect(() => {
-    
-        fetch("https://messonstats.com:8443/statsbymatch",
-        {
-            method: 'POST',
-            headers: API_HEADERS,
-            body: JSON.stringify(editProduct)
-        }).then(response => response.json())
-        .then(data => console.log(data))
-        .catch(error => console.log(error))
-
-    }, [])
 
     return (
         <section className="w-full h-[100vh] bg-blue-950 " >

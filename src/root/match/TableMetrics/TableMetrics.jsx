@@ -1,18 +1,18 @@
 import { Players } from "./Players";
 
-export const TableMetrics = () => {
+export const TableMetrics = ({players}) => {
 
     const metricsPlayer1 =
         {
-            winner: ["13", "11", "23"],
-            error: ["15", "7", "4"]
+            winner: players.playerOne.winner,
+            error: players.playerOne.error
         }
     
 
     const metricsPlayer2 =
         {
-            winner: ["8", "6", "18"],
-            error: ["14", "16", "4"]
+            winner: players.playerTow.winner,
+            error: players.playerTow.error
         }
     
 

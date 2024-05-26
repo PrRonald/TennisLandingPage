@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 export const Players = () => {
 
@@ -17,7 +18,8 @@ export const Players = () => {
             <div className="w-full grid grid-cols-1 xl:grid-cols-[auto_auto_auto] 
                  xl:gap-2 gap-6  justify-center place-items-center" >
                 {data.map((item) => (
-                    <div
+                    <Link
+                        to={`match/${item.description}`}
                         className="xl:w-[400px] w-[300px] xl:h-[150px] h-auto flex flex-col items-center justify-center
                         border-2 border-gray-500 hover:bg-blue-800"
                         key={item.id}>
@@ -33,7 +35,7 @@ export const Players = () => {
                              text-gray-500" >
                             {item.company2}
                         </h2>
-                    </div>
+                    </Link>
                 ))}
             </div>
         </section>

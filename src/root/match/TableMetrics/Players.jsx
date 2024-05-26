@@ -1,12 +1,9 @@
 import { BigNumber } from "./BigNumber";
 import { Metrics } from "./Metrics";
 import { NamesPoints } from "./NamesPoints";
-import { sum } from "../Sum";
+import { sum } from "../functions/Sum";
 
 export const Players = ({PositionPlayer, PlayerData}) => {
-
-
-    
 
     return (
         <section className="grid grid-cols-5 grid-rows-[auto_auto] " >
@@ -25,7 +22,7 @@ export const Players = ({PositionPlayer, PlayerData}) => {
                 </h1>
             </div>
             <div className="row-start-2 " >
-                <BigNumber number={sum(PlayerData.winner)} />
+                <BigNumber number={sum(PlayerData.error)} />
             </div>
             <div className="row-start-2  col-start-2 ">
                 <Metrics direction={true} metrics={PlayerData.error} rotate={false}/>
@@ -37,7 +34,7 @@ export const Players = ({PositionPlayer, PlayerData}) => {
                 <Metrics direction={false} metrics={PlayerData.winner} rotate={true}/>
             </div>
             <div className="row-start-2 col-start-5" >
-                <BigNumber number={sum(PlayerData.error)} />
+                <BigNumber number={sum(PlayerData.winner)} />
             </div>
         </section>
     );

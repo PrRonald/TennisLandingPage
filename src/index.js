@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import App from './App';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import "./styles/index.css"
-import { Match } from './root/Match';
+import { Match } from './root/match/Match/Match';
 import { Tennis } from './root/Tennis';
 import { Players } from './root/Players';
 import { LiveMatch } from './root/LiveMatch';
@@ -23,7 +23,7 @@ const router = createBrowserRouter(
           element: <Players />,
         },
         {
-          path: "match",
+          path: "Players/match/:playerId",
           element: <Match />,
         },
         {
