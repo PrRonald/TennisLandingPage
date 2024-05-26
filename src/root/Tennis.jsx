@@ -1,4 +1,4 @@
-import { Link, Outlet} from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 
 export const Tennis = () => {
 
@@ -8,14 +8,15 @@ export const Tennis = () => {
                 gap-6 pl-8 bg-yellow-500 ">
                 <Link
                     className="text-2xl text-gray-500 font-bold "
-                    to="players">
-                        Players
+                    to="/">
+                    Home
                 </Link>
                 <Link
                     className="text-2xl text-gray-500 font-bold "
-                    to="live-match">
-                        Live Match
+                    to="players">
+                    Players
                 </Link>
+
             </div>
             <div className="detail">
                 <Outlet />
