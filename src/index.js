@@ -5,17 +5,26 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import "./styles/index.css"
 import { Match } from './root/match/Match/Match';
 import { Tennis } from './root/Tennis';
-import { Players } from './root/Players';
+import { Players } from './root/player/Players';
 import { LiveMatch } from './root/LiveMatch';
+import { ErrorView } from './root/match/Match/ErrorView';
 
 const router = createBrowserRouter(
   [
     {
       path: "/",
+      errorElement: <ErrorView
+      error={"AN ERROR HAS HAPPENED"}
+      Return={"Return to Home"}
+      to={"/"} />,
       element: <App />,
     },
     {
       path: "/Tennis",
+      errorElement: <ErrorView 
+                      Return={"Return to Home"}
+                      message={"AN ERROR HAS HAPPENED"}
+                      to={"/Tennis"} />,
       element: <Tennis />,
       children: [
         {
@@ -27,7 +36,7 @@ const router = createBrowserRouter(
           element: <Match />,
         },
         {
-          path: "live-match",
+          path: "Players/live-match",
           element: <LiveMatch />,
         },
 

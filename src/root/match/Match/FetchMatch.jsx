@@ -19,7 +19,13 @@ export const FetchMatch = async (players, description) => {
         });
 
         const data = await response.json();
-        if(data.length < 2) throw new Error("The data length < 2")
+        if(data.length < 2){
+            console.log("error has happened ")
+
+            throw new Error("The data length < 2")
+
+        } 
+        console.log("ok")
 
         const [playerone, playertow] = data;
         const [Onename, Onelastname] = SplitString(playerone._id);
@@ -64,6 +70,6 @@ export const FetchMatch = async (players, description) => {
 
     } catch (error) {
         console.error(error);
-        return null;
+        return error;
     }
 };

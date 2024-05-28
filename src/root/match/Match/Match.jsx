@@ -4,6 +4,8 @@ import { TableMetrics } from "../TableMetrics/TableMetrics";
 import { PointsTable } from "../PointsTable/PointsTable"
 import { FetchMatch } from "./FetchMatch";
 import { useParams } from "react-router-dom";
+import { LinkButton } from "../../player/LinkButton";
+import { ErrorView } from "./ErrorView";
 
 export const Match = () => {
 
@@ -40,13 +42,20 @@ export const Match = () => {
         const fetchAndSetPlayers = async () => {
             try {
                 const fetchedPlayers = await FetchMatch(initialPlayers, description);
+                if (fetchedPlayers instanceof Error) {
+                    throw new Error("Error to render the data")
+                }
+                console.log("fetch step")
                 if (fetchedPlayers) {
                     setPlayers(fetchedPlayers);
                 }
             } catch (error) {
                 setError(error);
+                console.log("effect catch ")
             } finally {
                 setLoading(false);
+                console.log("finally ")
+
             }
         };
 
@@ -54,11 +63,33 @@ export const Match = () => {
     }, []);
 
     if (loading) {
-        return <div>Loading...</div>;
+        return (
+            <section className="w-full h-auto grid grid-cols-2 grid-rows-3 *:bg-gray-600">
+                <div className="w-full col-span-2 ">
+
+                </div>
+                <div className="w-full">
+
+                </div>
+                <div className="w-full">
+
+                </div>
+                <div className="w-full col-span-2">
+
+                </div>
+            </section>
+        );
     }
 
     if (error) {
-        return <div>Error: {error.message}</div>;
+        return( 
+            <ErrorView 
+                error={error.message}
+                Return={"Return to Players"} 
+                to={"/Tennis/Players"}
+            />
+         
+        ); 
     }
 
     return (
