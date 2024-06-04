@@ -3,11 +3,7 @@ import { PointsMap } from "./PointsMap";
 
 export const PointsTable = ({ players }) => {
 
-    const playerPoints = {
-        LastName: "DIMITROV",
-        Points: ["1", "2", "3", "4"]
-    }
-
+    console.log(players.playerTow.points);
     return (
         <section className="w-full flex flex-col items-center">
             <table className="w-full" >
@@ -16,19 +12,19 @@ export const PointsTable = ({ players }) => {
                         <th>
                         </th>
                         <th>
-                            UNRETURNED SERVES
+                            ACE
                         </th>
                         <th>
-                            SERVE POINTS WON
+                            SERVICE FAULT
                         </th>
                         <th>
-                            BASELINE POINTS WON
+                            DOUBLE FAULT
                         </th>
                         <th>
-                            NET POINTS WON
+                            RETURN ERROR
                         </th>
-                        <th className=" bg-yellow-400 text-center">
-                            TOTAL POINTS WON
+                        <th className="bg-yellow-400 text-center">
+                            FORCE ERROR
                         </th>
                     </tr>
                 </thead>
@@ -37,19 +33,13 @@ export const PointsTable = ({ players }) => {
                         <td className="text-left text-yellow-500">
                             {players.playerOne.lastname}
                         </td >
-                        <PointsMap points={playerPoints.Points} color={true} />
-                        <td>
-                            {sum(playerPoints.Points)}
-                        </td>
+                        <PointsMap points={players.playerOne.points} color={true} />
                     </tr>
                     <tr className="w-auto text-center text-lg font-semibold text-gray-500">
                         <td className="text-left text-gray-500">
                             {players.playerTow.lastname}
                         </td>
-                        <PointsMap points={playerPoints.Points} color={false} />
-                        <td className="">
-                            {sum(playerPoints.Points)}
-                        </td>
+                        <PointsMap points={players.playerTow.points} color={false} />
                     </tr>
                 </tbody>
             </table>

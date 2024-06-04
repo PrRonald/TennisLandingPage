@@ -4,7 +4,6 @@ import { TableMetrics } from "../TableMetrics/TableMetrics";
 import { PointsTable } from "../PointsTable/PointsTable"
 import { FetchMatch } from "./FetchMatch";
 import { useParams } from "react-router-dom";
-import { LinkButton } from "../../player/LinkButton";
 import { ErrorView } from "./ErrorView";
 
 export const Match = () => {
@@ -14,21 +13,21 @@ export const Match = () => {
     const initialPlayers = {
         playerOne: {
             id: 1,
-            name: "FRAME",
-            lastname: "DIMITROV",
-            country: "BUL",
-            points: ["6", "7", "6"],
-            winner: ["13", "5", "23"],
-            error: ["15", "7", "4"]
+            name: "name",
+            lastname: "name",
+            country: "country",
+            points: ["0", "0", "0", "0", "0"],
+            winner: ["0", "0"],
+            error: ["0", "0", "0"]
         },
         playerTow: {
             id: 2,
-            name: "ALEJANDRO",
-            lastname: "TABILO",
-            country: "CHIL",
-            points: ["7", "6", "2"],
-            winner: ["12", "9", "28"],
-            error: ["8", "10", "3"]
+            name: "name",
+            lastname: "name",
+            country: "country",
+            points: ["0", "0", "0", "0", "0"],
+            winner: ["0", "0"],
+            error: ["0", "0", "0"]
         }
     }
 
@@ -45,17 +44,13 @@ export const Match = () => {
                 if (fetchedPlayers instanceof Error) {
                     throw new Error("Error to render the data")
                 }
-                console.log("fetch step")
                 if (fetchedPlayers) {
                     setPlayers(fetchedPlayers);
                 }
             } catch (error) {
                 setError(error);
-                console.log("effect catch ")
             } finally {
                 setLoading(false);
-                console.log("finally ")
-
             }
         };
 

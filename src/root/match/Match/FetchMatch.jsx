@@ -19,6 +19,8 @@ export const FetchMatch = async (players, description) => {
         });
 
         const data = await response.json();
+        console.log(data);
+
         if(data.length < 2){
             console.log("error has happened ")
 
@@ -38,12 +40,13 @@ export const FetchMatch = async (players, description) => {
                 lastname: Onelastname,
                 points: [
                     playerone.ACE,
+                    playerone.SERVICE_FAULT,
                     playerone.DOUBLE_FAULT,
+                    playerone.RETURN_ERROR,
                     playerone.FORCED_ERROR,
                 ],
                 winner: [
-                    playerone.RETURN_ERROR,
-                    playerone.SERVICE_FAULT,
+                    playerone.WINNER,
                     playerone.UNFORCED_ERROR
                 ],
                 error: players.playerOne.error
@@ -54,12 +57,13 @@ export const FetchMatch = async (players, description) => {
                 lastname: Towlastname,
                 points: [
                     playertow.ACE,
+                    playertow.SERVICE_FAULT,
                     playertow.DOUBLE_FAULT,
+                    playertow.RETURN_ERROR,
                     playertow.FORCED_ERROR,
                 ],
                 winner: [
-                    playertow.RETURN_ERROR,
-                    playertow.SERVICE_FAULT,
+                    playertow.WINNER,
                     playertow.UNFORCED_ERROR
                 ],
                 error: players.playerTow.error
