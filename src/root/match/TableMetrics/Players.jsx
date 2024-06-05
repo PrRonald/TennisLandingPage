@@ -1,7 +1,6 @@
 import { BigNumber } from "./BigNumber";
 import { Metrics } from "./Metrics";
 import { NamesPoints } from "./NamesPoints";
-import { sum } from "../functions/Sum";
 
 export const Players = ({PositionPlayer, PlayerData}) => {
 
@@ -22,19 +21,19 @@ export const Players = ({PositionPlayer, PlayerData}) => {
                 </h1>
             </div>
             <div className="row-start-2 " >
-                <BigNumber number={sum(PlayerData.error)} />
+                <BigNumber number={PlayerData[0]} />
             </div>
             <div className="row-start-2  col-start-2 ">
-                <Metrics direction={true} metrics={PlayerData.error} rotate={false}/>
+                {/* <Metrics direction={true} metrics={PlayerData.error} rotate={false}/> */}
             </div>
             <div className="row-start-2  col-start-3">
                 <NamesPoints />
             </div>
             <div className="row-start-2 col-start-4">
-                <Metrics direction={false} metrics={PlayerData.winner} rotate={true}/>
+                {/* <Metrics direction={false} metrics={PlayerData.winner} rotate={true}/> */}
             </div>
             <div className="row-start-2 col-start-5" >
-                <BigNumber number={sum(PlayerData.winner)} />
+                <BigNumber number={PlayerData[1]} />
             </div>
         </section>
     );

@@ -1,9 +1,7 @@
-import { sum } from "../functions/Sum";
 import { PointsMap } from "./PointsMap";
 
 export const PointsTable = ({ players }) => {
 
-    console.log(players.playerTow.points);
     return (
         <section className="w-full flex flex-col items-center">
             <table className="w-full" >
