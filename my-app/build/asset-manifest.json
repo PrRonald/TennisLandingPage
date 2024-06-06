@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/static/css/main.ba4be29d.css",
+    "main.js": "/static/js/main.d012d76b.js",
+    "static/media/playerTennis.jpg": "/static/media/playerTennis.edb63ff8ffe69d364e66.jpg",
+    "static/media/frontPage.jpeg": "/static/media/frontPage.9e6abda8187a3f0bd130.jpeg",
+    "static/media/playerWinn.png": "/static/media/playerWinn.eb0abd10df9f8ec1a81d.png",
+    "index.html": "/index.html",
+    "main.ba4be29d.css.map": "/static/css/main.ba4be29d.css.map",
+    "main.d012d76b.js.map": "/static/js/main.d012d76b.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ba4be29d.css",
+    "static/js/main.d012d76b.js"
+  ]
+}

@@ -1,5 +1,30 @@
+import React, { useState, useEffect } from 'react';
+import io from 'socket.io-client';
+
+const socket = io('http://localhost:3000'); // Connect to Socket.io server
 
 export const LiveMatch = () => {
+
+    const [messages, setMessages] = useState([]);
+    const [input, setInput] = useState('');
+
+    useEffect(() => {
+        // Listen for incoming messages from the server
+        socket.on('message', (data) => {
+            setMessages((prevMessages) => [...prevMessages, data]);
+        });
+
+        return () => {
+            // Clean up the event listener when the component unmounts
+            socket.disconnect();
+        };
+    }, []);
+
+    const handleMessageSend = () => {
+        // Send a message to the server
+        socket.emit('message', input);
+        setInput('');
+    };
 
     return (
         <section className="w-full h-[100vh] bg-blue-950 " >
@@ -35,6 +60,14 @@ export const LiveMatch = () => {
                     </h1>
                 </div>
             </div>
+            <div>
+            <h1>Socket.io Chat</h1>
+            <div>
+                {messages.map((message, index) => (
+                    <p key={index}>{message}</p>
+                ))}
+            </div>
+        </div>
         </section>
     );
 }
