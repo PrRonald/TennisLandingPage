@@ -2,7 +2,7 @@ const ioClient = require('socket.io-client');
 const readline = require('readline');
 
 // Connect to the server
-const socket = ioClient('http://localhost:3000'); // Assuming the server is running locally on port 3000
+const socket = ioClient('http://localhost:8443'); // Assuming the server is running locally on port 3000
 
 // Create readline interface for user input
 const rl = readline.createInterface({

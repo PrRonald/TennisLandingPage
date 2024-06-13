@@ -7,7 +7,7 @@ const app = express();
 const server = http.createServer(app);
 const io = socketIo(server);
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8443;
 
 // Serve the React app (assuming it's built and located in the 'client/build' directory)
 app.use(express.static(path.join(__dirname, 'my-app', 'build')));
