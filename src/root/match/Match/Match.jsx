@@ -1,89 +1,63 @@
 import { useEffect, useState } from "react";
 import { TablePlayers } from "../Players/TablePlayers";
 import { TableMetrics } from "../TableMetrics/TableMetrics";
-import { PointsTable } from "../PointsTable/PointsTable"
-import { FetchMatch } from "./FetchMatch";
+import { PointsTable } from "../PointsTable/PointsTable";
 import { useParams } from "react-router-dom";
 import { ErrorView } from "./ErrorView";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchMatch } from "../Match/matchSlice";
+
+const initialPlayers = {
+    playerOne: {
+        id: 1,
+        name: "name",
+        lastname: "name",
+        country: "country",
+        points: ["0", "0", "0", "0", "0"],
+        winner: ["0", "0"],
+        error: ["0", "0", "0"]
+    },
+    playerTow: {
+        id: 2,
+        name: "name",
+        lastname: "name",
+        country: "country",
+        points: ["0", "0", "0", "0", "0"],
+        winner: ["0", "0"],
+        error: ["0", "0", "0"]
+    }
+};
 
 export const Match = () => {
-
     const playerId = useParams();
-
-    const initialPlayers = {
-        playerOne: {
-            id: 1,
-            name: "name",
-            lastname: "name",
-            country: "country",
-            points: ["0", "0", "0", "0", "0"],
-            winner: ["0", "0"],
-            error: ["0", "0", "0"]
-        },
-        playerTow: {
-            id: 2,
-            name: "name",
-            lastname: "name",
-            country: "country",
-            points: ["0", "0", "0", "0", "0"],
-            winner: ["0", "0"],
-            error: ["0", "0", "0"]
-        }
-    }
-
-    const [players, setPlayers] = useState(initialPlayers);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
-
     const description = Object.values(playerId)[0];
+    const dispatch = useDispatch();
+    const [players, setPlayers] = useState(initialPlayers)
+    const { transformedPlayers, status, error } = useSelector(state => state.match);
 
     useEffect(() => {
-        const fetchAndSetPlayers = async () => {
-            try {
-                const fetchedPlayers = await FetchMatch(initialPlayers, description);
-                if (fetchedPlayers instanceof Error) {
-                    throw new Error("Error to render the data")
-                }
-                if (fetchedPlayers) {
-                    setPlayers(fetchedPlayers);
-                }
-            } catch (error) {
-                setError(error);
-            } finally {
-                setLoading(false);
-            }
-        };
+        dispatch(fetchMatch({ players: initialPlayers, description }));
+    }, [dispatch, description]);
 
-        fetchAndSetPlayers();
-    }, []);
+    useEffect(()=>{
+        if(status === "succeeded"){
+            setPlayers(transformedPlayers)
+        }
+    }, [status, transformedPlayers])
 
-    if (loading) {
+    if (status === 'loading') {
         return (
-            <section className="w-full h-auto grid grid-cols-2 grid-rows-3 *:bg-gray-600">
-                <div className="w-full col-span-2 ">
-
-                </div>
-                <div className="w-full">
-
-                </div>
-                <div className="w-full">
-
-                </div>
-                <div className="w-full col-span-2">
-
-                </div>
-            </section>
+           <p>LOADING</p>
         );
     }
 
-    if (error) {
+    if (status === 'failed') {
         return( 
             <ErrorView 
-                error={error.message}
+                error={error}
                 Return={"Return to Players"} 
                 to={"/Tennis/Players"}
             />
-         
         ); 
     }
 

@@ -1,16 +1,41 @@
 import { useEffect, useState } from "react";
 import { LinkButton } from "./LinkButton";
+import { playerFetch } from "./playerslice";
+import { useDispatch, useSelector } from "react-redux";
+import { ErrorView } from "../match/Match/ErrorView";
 
 export const Players = () => {
 
     const [data, setData] = useState([]);
+    const dispatch = useDispatch()
+    const datas = useSelector(state => state.player.data);
+    const status = useSelector(state => state.player.status);
 
     useEffect(() => {
-        fetch("https://messonstats.com:8443/product")
-            .then((data) => (data.json()))
-            .then((data) => setData(data))
-            .catch(() => console.log("error"))
-    }, [])
+        dispatch(playerFetch());
+      }, [dispatch]);
+
+    useEffect(()=>{
+        if(status === "succeeded"){
+            setData(datas)
+        }
+    }, [status, data])
+    
+    if(status === 'loading'){
+        return(
+            <p>LOADING</p>
+        )
+    }
+
+    if(status === 'failed'){
+        return(
+            <ErrorView 
+                error={"error"}
+                Return={"Return to Players"} 
+                to={"/Tennis/Players"}
+            />
+        )
+    }
 
     return (
         <section className="w-full xl:h-100vh text-center bg-blue-950

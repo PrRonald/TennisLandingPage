@@ -1,5 +1,5 @@
 import { BigNumber } from "./BigNumber";
-import { Metrics } from "./Metrics";
+import { Metrics } from "./Metrics/Metrics";
 import { NamesPoints } from "./NamesPoints";
 
 export const Players = ({PositionPlayer, PlayerData}) => {
@@ -30,7 +30,7 @@ export const Players = ({PositionPlayer, PlayerData}) => {
                 <NamesPoints />
             </div>
             <div className="row-start-2 col-start-4">
-                {/* <Metrics direction={false} metrics={PlayerData.winner} rotate={true}/> */}
+                <Metrics direction={false} metrics={PlayerData} rotate={true}/>
             </div>
             <div className="row-start-2 col-start-5" >
                 <BigNumber number={PlayerData[1]} />

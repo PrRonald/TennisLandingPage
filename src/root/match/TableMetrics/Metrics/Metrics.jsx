@@ -1,4 +1,26 @@
+import { useEffect } from "react";
+import { FetchPoints } from "./FetchPoints";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchMetrics } from "./metricsSlice";
+import axios from "axios";
+
 export const Metrics = ({ direction, metrics, rotate }) => {
+
+    const dispatch = useDispatch();
+    const status = useSelector((state) => state.metrics.status)
+    const data = useSelector((state) => state.metrics.dd)
+    const id = "1715702616109"
+
+    useEffect(()=>{
+        dispatch(fetchMetrics(id))
+    },[dispatch])
+
+    useEffect(()=>{
+        const values = FetchPoints()
+        console.log(values)
+    },[])
+
+    
 
     const addToEachElement = (inputList, number) => {
         let numberList = inputList.map(Number);

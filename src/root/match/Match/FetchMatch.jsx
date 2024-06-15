@@ -1,6 +1,6 @@
 import { SplitString } from "../functions/SplitString";
 
-export const FetchMatch = async (players, description) => {
+export const FetchMatch = async (players, description, id) => {
     const API_HEADERS = {
         'Content-type': 'application/json',
         Authentication: 'any-string-you-like'
@@ -19,16 +19,13 @@ export const FetchMatch = async (players, description) => {
         });
 
         const data = await response.json();
-        console.log(data);
-
+        console.log(data)
         if(data.length < 2){
             console.log("error has happened ")
 
             throw new Error("The data length < 2")
 
         } 
-        console.log("ok")
-
         const [playerone, playertow] = data;
         const [Onename, Onelastname] = SplitString(playerone._id);
         const [Towname, Towlastname] = SplitString(playertow._id);
