@@ -149,8 +149,8 @@ export const LiveMatch = (props) => {
       <div className="content-center lg:content-center">
         <div className="flex flex-row lg:flex lg:flex-row">
           <div className="w-1/2">
-            <div className="flex lg:justify-center">
-              <div className="w-[150px] h-[110px] lg:w-[500px] lg:h-[50vh] border border-white m-5">
+            <div className="lg:flex lg:justify-center">
+              <div className="w-[150px] h-[110px] lg:w-[500px] lg:h-[200px] border border-white m-5">
                 <div className="text-center">
                   <div className="p-5 lg:p-10">
                     <h1 className="font-bold text-yellow-500 text-4xl">
@@ -164,7 +164,7 @@ export const LiveMatch = (props) => {
           </div>
           <div className="w-1/2">
             <div className="flex lg:justify-center">
-              <div className="w-[150px] h-[110px] lg:w-[500px] lg:h-[50vh] border border-white m-5">
+              <div className="w-[150px] h-[110px] lg:w-[500px] lg:h-[200px] border border-white m-5">
                 <div className="text-center">
                   <div className="p-5 lg:p-10">
                     <h1 className="font-bold text-yellow-500 text-4xl">
