@@ -17,10 +17,10 @@ var player2 = "";
 export const LiveMatch = (props) => {
   const { id } = useParams();
 
-  const datas = useSelector(state => state.player.data);
+  const datas = useSelector((state) => state.player.data);
 
-  const [player, setPlayer] = useState("")
-  const [player2, setPlayer2] = useState("")
+  const [player, setPlayer] = useState("");
+  const [player2, setPlayer2] = useState("");
   const [products, setProducts] = useState([
     {
       images: [],
@@ -91,19 +91,16 @@ export const LiveMatch = (props) => {
   const [input, setInput] = useState("");
 
   useEffect(() => {
-
     let filteredData = datas.filter(
-      (data, index) =>
-        data.id.toLowerCase().indexOf(id.toLowerCase()) !== -1
+      (data, index) => data.id.toLowerCase().indexOf(id.toLowerCase()) !== -1
     );
 
-    console.log(filteredData)
-    if(filteredData.length > 0){
-      setPlayer(filteredData[0].company)
-      setPlayer2(filteredData[0].company2)
-      console.log(filteredData[0].company)
+    console.log(filteredData);
+    if (filteredData.length > 0) {
+      setPlayer(filteredData[0].company);
+      setPlayer2(filteredData[0].company2);
+      console.log(filteredData[0].company);
     }
-  
 
     socket.on("message", (data) => {
       console.log(data);
@@ -152,22 +149,30 @@ export const LiveMatch = (props) => {
       <div className="content-center lg:content-center">
         <div className="flex flex-row lg:flex lg:flex-row">
           <div className="w-1/2">
-            <div className="w-[150px] h-[110px] lg:w-[500px] lg:h-[50vh] border border-white m-5">
-              <div className="text-center">
-                <div className="p-5 lg:p-10">
-                  <h1 className="font-bold text-yellow-500 text-4xl">{scoreNote[scoreDashData]}</h1>
+            <div className="flex lg:justify-center">
+              <div className="w-[150px] h-[110px] lg:w-[500px] lg:h-[50vh] border border-white m-5">
+                <div className="text-center">
+                  <div className="p-5 lg:p-10">
+                    <h1 className="font-bold text-yellow-500 text-4xl">
+                      {scoreNote[scoreDashData]}
+                    </h1>
+                  </div>
+                  <h1 className="font-bold text-white">{player}</h1>
                 </div>
-                <h1 className="font-bold text-white">{player}</h1>
               </div>
             </div>
           </div>
           <div className="w-1/2">
-            <div className="w-[150px] h-[110px] lg:w-[500px] lg:h-[50vh] border border-white m-5">
-              <div className="text-center">
-                <div className="p-5 lg:p-10">
-                  <h1 className="font-bold text-yellow-500 text-4xl">{scoreNote[scoreDashData2]}</h1>
+            <div className="flex lg:justify-center">
+              <div className="w-[150px] h-[110px] lg:w-[500px] lg:h-[50vh] border border-white m-5">
+                <div className="text-center">
+                  <div className="p-5 lg:p-10">
+                    <h1 className="font-bold text-yellow-500 text-4xl">
+                      {scoreNote[scoreDashData2]}
+                    </h1>
+                  </div>
+                  <h1 className="font-bold text-white">{player2}</h1>
                 </div>
-                <h1 className="font-bold text-white">{player2}</h1>
               </div>
             </div>
           </div>
@@ -175,7 +180,9 @@ export const LiveMatch = (props) => {
         <div className="flex flex-row lg:flex lg:flex-row">
           <div className="w-full lg:w-[100%]">
             <div className="text-center lg:text-center">
-              <h1 className="text-white text-2xl font-bold">{gameRecord +" - "+ gameRecord2}</h1>
+              <h1 className="text-white text-2xl font-bold">
+                {gameRecord + " - " + gameRecord2}
+              </h1>
             </div>
           </div>
         </div>
