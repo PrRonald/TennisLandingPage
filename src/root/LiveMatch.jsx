@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import io from "socket.io-client";
+import { useSelector } from "react-redux";
 
 const socket = io("http://localhost:8443"); // Connect to Socket.io server
 
@@ -12,8 +14,13 @@ var changeServiceBall = false;
 var player = "";
 var player2 = "";
 
-export const LiveMatch = () => {
-  // const [products, setProducts] = useState([]);
+export const LiveMatch = (props) => {
+  const { id } = useParams();
+
+  const datas = useSelector(state => state.player.data);
+
+  const [player, setPlayer] = useState("")
+  const [player2, setPlayer2] = useState("")
   const [products, setProducts] = useState([
     {
       images: [],
@@ -84,21 +91,30 @@ export const LiveMatch = () => {
   const [input, setInput] = useState("");
 
   useEffect(() => {
-    // Listen for incoming messages from the server
+
+    let filteredData = datas.filter(
+      (data, index) =>
+        data.id.toLowerCase().indexOf(id.toLowerCase()) !== -1
+    );
+
+    console.log(filteredData)
+    if(filteredData.length > 0){
+      setPlayer(filteredData[0].company)
+      setPlayer2(filteredData[0].company2)
+      console.log(filteredData[0].company)
+    }
+  
+
     socket.on("message", (data) => {
       console.log(data);
       setMessages((prevMessages) => [...prevMessages, data]);
 
-      // Insert the received data into the actions array
       setProducts((prevProducts) => {
-        // Clone the previous products array
         const updatedProducts = [...prevProducts];
-        // Find the product with the specified id
         const productIndex = updatedProducts.findIndex(
-          (product) => product.id === "1715702419294"
+          (product) => product.id === id
         );
         if (productIndex !== -1) {
-          // If the product exists, push the new data into its actions array
           updatedProducts[productIndex].actions.push(JSON.parse(data));
         }
         return updatedProducts;
@@ -106,18 +122,15 @@ export const LiveMatch = () => {
     });
 
     return () => {
-      // Clean up the event listener when the component unmounts
       socket.disconnect();
     };
   }, []);
 
   const handleMessageSend = () => {
-    // Send a message to the server
     socket.emit("message", input);
     setInput("");
   };
 
-  // Ensure that products is an array before using flatMap
   console.log(products);
   const result = Array.isArray(products)
     ? products.flatMap((data) => (data.actions ? data.actions : []))
@@ -128,7 +141,7 @@ export const LiveMatch = () => {
   console.log(filteredResult);
 
   // Call procesarDatos with filteredResult
-  procesarDatos(filteredResult, "Carlos Florentino", "Aldo Lee");
+  procesarDatos(filteredResult, player, player2);
 
   let scoreNote = ["0", "15", "30", "40", "Adv"];
   let scoreField = scoreNote[scoreDashData] + "-" + scoreNote[scoreDashData2];
@@ -190,9 +203,6 @@ const procesarDatos = (datos, company, company2) => {
   let gameCompany2 = 0;
   let juegoActual = 0;
   let deuce = false;
-
-  player = company
-  player2 = company2
 
   for (const accion of datos) {
     const jugador = accion.player;

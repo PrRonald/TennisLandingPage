@@ -16,6 +16,7 @@ export const Players = () => {
       }, [dispatch]);
 
     useEffect(()=>{
+        console.log(data)
         if(status === "succeeded"){
             setData(datas)
         }
@@ -65,7 +66,7 @@ export const Players = () => {
                             <LinkButton to={`match/${item.description}`}
                                         name={"Metrics"}
                                         GreyYellow={true}/>
-                            <LinkButton to={`live-match`} 
+                            <LinkButton to={`live-match/${item.id}`} 
                                         name={"Live Match"}
                                         GreyYellow={false}/>
                                 
